@@ -36,6 +36,12 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/todos',authMiddleware, todoRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Only listen when running locally (not when Vercel imports the app)
+if (!process.env.VERCEL && process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}
+
+// export the app for serverless wrapper
+export default app;
