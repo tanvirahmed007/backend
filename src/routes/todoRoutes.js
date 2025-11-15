@@ -56,7 +56,7 @@ router.delete('/:id', async (req, res) => {
         }
     })
 
-    res.send({ message: "Todo deleted" })
+    res.json({ message: "Todo deleted" })
 })
 
 export default router
