@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
         res.json({ token })
     } catch (err) {
         console.log(err.message)
-        res.sendStatus(503)
+        return res.status(503).json({ error: "Something went wrong" })
     }
 })
 
@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
         res.json({ token })
     } catch (err) {
         console.log(err.message)
-        res.sendStatus(503)
+        return res.status(503).json({ error: "Something went wrong" })
     }
 
 })
