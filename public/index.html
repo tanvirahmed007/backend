@@ -178,7 +178,7 @@
         // access email and pass values
         const emailVal = email.value
         const passVal = password.value
-
+        console.log("AUTHENTICATE CALLED", { emailVal, passVal, isRegistration });
         // guard clauses... if authenticating, return
         if (
             isLoading ||
@@ -196,6 +196,7 @@
 
         try {
             let data
+            console.log("AUTHENTICATING...", isRegistration ? "REGISTERING" : "LOGGING IN");
             if (isRegistration) {
                 // register an account
                 const response = await fetch(apiBase + 'auth/register', {
@@ -204,6 +205,7 @@
                     body: JSON.stringify({ username: emailVal, password: passVal })
                 })
                 data = await response.json()
+                console.log("REGISTRATION RESPONSE DATA:", data);
             } else {
                 // login an account
                 const response = await fetch(apiBase + 'auth/login', {
