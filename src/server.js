@@ -43,5 +43,5 @@ if (!process.env.VERCEL && process.env.NODE_ENV !== 'production') {
   });
 }
 
-// export the app for serverless wrapper
+// export the app for serverless wrappers
 export default app;
